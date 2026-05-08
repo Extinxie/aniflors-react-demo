@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+body {
+	background-color: #111;
+	/* color: white; */
+	overflow-x: hidden;
+	max-width: 100vw;
+	color: white !important;
+	/* text-color: white; */
+	/* color: white; */
+}
+html {
+	overflow-x: hidden;
+	max-width: 100vw;
+}
+
+.custom-menu-dropdown {
+	background: linear-gradient(
+		135deg,
+		#1f0f2a 0%,
+		#08010f 50%,
+		#140013 100%
+	) !important;
+	border-color: #08070f !important;
+}
+
+.custom-menu-item {
+	color: white !important;
+}
+
+.custom-menu-item:hover,
+.custom-menu-item[data-hovered],
+.custom-menu-item[data-hovered='true'] {
+	background-color: rgba(34, 24, 58, 0.5) !important;
+	color: white !important;
+}
