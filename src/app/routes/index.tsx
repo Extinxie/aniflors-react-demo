@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Route, Routes } from 'react-router-dom'
 import Homepage from '../../pages/home/home-page'
 import PlaylistOfAnime from '../../pages/playlists-animes/playlist-anime'
@@ -29,6 +30,30 @@ const RoterProvidorAniflorsDemo = () => {
 }
 
 export default RoterProvidorAniflorsDemo
+=======
+import { Route, Routes } from "react-router-dom";
+import Homepage from "../../pages/home/home-page";
+import PlaylistOfAnime from "../../pages/playlists-animes/playlist-anime";
+import FAQuQ from "../../pages/FAQ/info-faq";
+import { TitleParams } from "../../pages/title-params-page/title-params";
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+
+const RoterProvidorAniflorsDemo = () => {
+  return (
+    <MantineProvider>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/animes" element={<PlaylistOfAnime />} />
+        <Route path="/info" element={<FAQuQ />} />
+        <Route path="/:code" element={<TitleParams />} />
+      </Routes>
+    </MantineProvider>
+  );
+};
+
+export default RoterProvidorAniflorsDemo;
+>>>>>>> 52c47dc75e9bc6181821a7d513db197472176551
 
 // import { Button, Menu } from '@mantine/core';
 
