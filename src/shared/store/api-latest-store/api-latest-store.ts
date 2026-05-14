@@ -14,7 +14,6 @@ class AnimeLatest {
     try {
       this.loading = true;
       const res = await fetch(`${API_URI}/animes/latest`);
-<<<<<<< HEAD
       if (!res.ok) {
         runInAction(() => {
           this.loading = false;
@@ -22,8 +21,6 @@ class AnimeLatest {
         });
         return;
       }
-=======
->>>>>>> 52c47dc75e9bc6181821a7d513db197472176551
       const data = await res.json();
       runInAction(() => {
         this.loading = false;
