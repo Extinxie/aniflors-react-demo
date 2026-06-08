@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { HEADER_ITEMS } from '../lib/header.const'
 import { Modal } from '../../../../shared/ui/modal/modal'
 import { ExploreIcon } from '../../../../shared/data/svg/explore/explore'
 import { BellSvg } from '../../../../shared/data/svg/bell/bell'
@@ -18,16 +17,9 @@ const Header = observer(() => {
 		<>
 			<header className="w-full flex items-center justify-between gap-2 md:gap-4 px-2 md:px-4 lg:px-8 py-4 z-10 relative max-w-full overflow-hidden">
 				<div className="flex items-center gap-2 md:gap-4 lg:gap-6 min-w-0">
-					{HEADER_ITEMS.map((item, index) => (
-						<div key={index}>
-							<Link
-								to={item.link}
-								className="text-sm md:text-2xl lg:text-3xl text-white hover:opacity-80 transition-opacity whitespace-nowrap"
-							>
-								{item.name}
-							</Link>
-						</div>
-					))}
+					<Link to={'/'} className="text-4xl font-bold text-white">
+						Lacrimosa
+					</Link>
 				</div>
 
 				<div className="flex items-center gap-1 md:gap-3 lg:gap-4 shrink-0">
@@ -82,7 +74,13 @@ const Header = observer(() => {
 						</Menu>
 					) : (
 						<Link to={'/registration'}>
-							<div className="w-12 h-12 md:w-12 md:h-12 rounded-full border-2 cursor-pointer hover:opacity-80 transition-opacity flex items-center justify-center"></div>
+							<div className="w-12 h-12 md:w-12 md:h-12 rounded-full border-2  cursor-pointer hover:opacity-80 transition-opacity flex items-center justify-center">
+								<img
+									src="rimsolo.jpg"
+									className="rounded-full w-11 h-11"
+									alt=""
+								/>
+							</div>
 						</Link>
 					)}
 				</div>

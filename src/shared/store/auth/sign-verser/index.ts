@@ -1,4 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import { API_URI } from '../../../api/api.const'
+// import { API_URI } from '../../api/api.const'
 
 export type IUser = {
 	id: string
@@ -23,7 +25,7 @@ class SignVersers {
 		password: string
 	}) => {
 		try {
-			const res = await fetch('http://localhost:3001/auth/sign-up', {
+			const res = await fetch(`${API_URI}/auth/sign-up`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -53,7 +55,7 @@ class SignVersers {
 
 	signIn = async (credentials: { email: string; password: string }) => {
 		try {
-			const res = await fetch('http://localhost:3001/auth/sign-in', {
+			const res = await fetch(`${API_URI}/auth/sign-in`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -85,28 +87,44 @@ class SignVersers {
 
 	checkAuthProfile = async () => {
 		try {
-			const res = await fetch('http://localhost:3001/auth/profile', {
+			const res = await fetch(`${API_URI}/auth/profile`, {
 				method: 'GET',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include'
 			})
-			const data = await res.json()
+			const text = await res.text()
+			if (!res.ok || !text.trim()) {
+				runInAction(() => {
+					this.user = null
+					this.isAuth = false
+				})
+				return false
+			}
+			const data = JSON.parse(text)
 			if (data.success) {
 				runInAction(() => {
 					this.user = data.data
 					this.isAuth = true
 				})
 				return true
-			} else {
 			}
+			runInAction(() => {
+				this.user = null
+				this.isAuth = false
+			})
 		} catch (e) {
+			runInAction(() => {
+				this.user = null
+				this.isAuth = false
+			})
 			console.error(e)
 		}
+		return false
 	}
 
 	signOut = async () => {
 		try {
-			const res = await fetch('http://localhost:3001/auth/sign-out', {
+			const res = await fetch(`${API_URI}/auth/sign-out`, {
 				method: 'POST',
 				// headers: {
 				// 	'Content-Type': 'application/json'

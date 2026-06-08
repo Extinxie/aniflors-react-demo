@@ -4,6 +4,7 @@ import { Background } from '../../widgets/layout/home/background/background'
 import { ItarationLatestCards } from '../../widgets/layout/home/itaration-cards/itaration-latest-cards'
 import { MainPageWidget } from '../../widgets/layout/home/title-widgets/title-widget'
 import { ArrowRight } from '../../shared/data/svg/arrow-home/arrow-home'
+import { ItarationLatestCards2 } from '../../widgets/layout/home/itaration-cards/all-animes-cards'
 
 const Homepage = () => {
 	return (
@@ -20,6 +21,7 @@ const Homepage = () => {
 				</div>
 			</Link>
 			<ItarationLatestCards />
+			<ItarationLatestCards2 />
 		</div>
 	)
 }

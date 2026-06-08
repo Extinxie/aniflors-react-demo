@@ -26,8 +26,15 @@ class UsersMe {
 				},
 				credentials: 'include'
 			})
-			const payload = await responce.json()
-			if (!responce.ok || !payload?.success || !payload.data) {
+			const text = await responce.text()
+			if (!responce.ok || !text.trim()) {
+				runInAction(() => {
+					this.me = null
+				})
+				return
+			}
+			const payload = JSON.parse(text)
+			if (!payload?.success || !payload.data) {
 				runInAction(() => {
 					this.me = null
 				})

@@ -3,12 +3,12 @@ import { useEffect } from 'react'
 import { animesLatest } from '../../../../shared/store/anime-get/api-latest-store'
 import { AniCard } from '../../../../features/anime-card/anime-card'
 
-export const ItarationLatestCards = observer(() => {
-	const { FindLatestAnimes, latests, loading } = animesLatest
+export const ItarationLatestCards2 = observer(() => {
+	const { animeData, loading, FindAnimesPopular } = animesLatest
 
 	useEffect(() => {
-		FindLatestAnimes()
-	}, [FindLatestAnimes])
+		FindAnimesPopular()
+	}, [FindAnimesPopular])
 
 	if (loading) {
 		return (
@@ -17,10 +17,11 @@ export const ItarationLatestCards = observer(() => {
 			</div>
 		)
 	}
+	console.log(animeData)
 
 	return (
 		<div className="flex items-center gap-2 overflow-x-auto overflow-y-hidden px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ml-1">
-			{latests.map((item) => (
+			{animeData.slice(10, 20).map((item) => (
 				<div
 					key={item.id}
 					className="shrink-0 w-[150px] md:w-[220px] lg:w-[230px]"
