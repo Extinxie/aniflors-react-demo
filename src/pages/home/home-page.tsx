@@ -5,6 +5,7 @@ import { ItarationLatestCards } from '../../widgets/layout/home/itaration-cards/
 import { MainPageWidget } from '../../widgets/layout/home/title-widgets/title-widget'
 import { ArrowRight } from '../../shared/data/svg/arrow-home/arrow-home'
 import { ItarationLatestCards2 } from '../../widgets/layout/home/itaration-cards/all-animes-cards'
+import { TopListUserComponent } from '../../widgets/layout'
 
 const Homepage = () => {
 	return (
@@ -12,7 +13,10 @@ const Homepage = () => {
 			<Header />
 			<Background />
 			<MainPageWidget />
-			<Link className="flex ml-2 mt-5 text-xl opacity-80" to={'/animes'}>
+			<Link
+				className="flex ml-2 mt-5 text-xl opacity-80"
+				to={'/collections'}
+			>
 				<div className="flex justify-center items-center">
 					<p className="font-bold text-neutral-300">
 						Популярные подборки
@@ -20,6 +24,7 @@ const Homepage = () => {
 					<ArrowRight />
 				</div>
 			</Link>
+			<TopListUserComponent />
 			<ItarationLatestCards />
 			<ItarationLatestCards2 />
 		</div>

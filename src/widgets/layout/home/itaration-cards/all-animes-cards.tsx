@@ -17,7 +17,6 @@ export const ItarationLatestCards2 = observer(() => {
 			</div>
 		)
 	}
-	console.log(animeData)
 
 	return (
 		<div className="flex items-center gap-2 overflow-x-auto overflow-y-hidden px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ml-1">

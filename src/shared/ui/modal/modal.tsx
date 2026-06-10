@@ -2,9 +2,15 @@ type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  contentClassName?: string;
 };
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({
+  isOpen,
+  onClose,
+  children,
+  contentClassName = "max-w-md",
+}: ModalProps) => {
   if (!isOpen) return null;
 
   return (
@@ -16,7 +22,7 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
         <div
-          className="relative w-full max-w-md rounded-xl bg-neutral-900 p-6 shadow-2xl"
+          className={`relative w-full rounded-xl bg-neutral-900 p-6 shadow-2xl ${contentClassName}`}
           onClick={(e) => e.stopPropagation()}
         >
           <button

@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 
 type AniCardProps = {
   item: IAnimeLatest;
+  onNavigate?: () => void;
 };
 
-export const AniCard = ({ item }: AniCardProps) => {
+export const AniCard = ({ item, onNavigate }: AniCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link to={`/${item.slug}`}>
+    <Link to={`/anime/${item.slug}`} onClick={onNavigate}>
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

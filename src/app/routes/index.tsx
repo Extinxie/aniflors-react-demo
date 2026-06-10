@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import Homepage from '../../pages/home/home-page'
-import PlaylistOfAnime from '../../pages/playlists-animes/playlist-anime'
+import { PlaylistOfAnime } from '../../pages/playlists-animes/playlist-anime'
 import FAQuQ from '../../pages/FAQ/info-faq'
 import { TitleParams } from '../../pages/title-params-page/title-params'
 import { MantineProvider } from '@mantine/core'
@@ -17,12 +17,12 @@ const RoterProvidorAniflorsDemo = () => {
 		<MantineProvider>
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-				<Route path="/animes" element={<PlaylistOfAnime />} />
+				<Route path="/collections" element={<PlaylistOfAnime />} />
 				<Route path="/info" element={<FAQuQ />} />
 				<Route path="/registration" element={<RegistationPage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/profile" element={<ProfilePage />} />
-				<Route path="/:code" element={<TitleParams />} />
+				<Route path="/anime/:id" element={<TitleParams />} />
 			</Routes>
 		</MantineProvider>
 	)

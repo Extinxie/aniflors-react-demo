@@ -10,15 +10,26 @@ class GeneralAnimes {
 		makeAutoObservable(this)
 	}
 
-	getGeneralAnimes = async (slug: string) => {
+	getGeneralAnimes = async (id: string) => {
 		try {
 			this.loading = true
-			const res = await fetch(`${API_URI}/animes/title/${slug}`)
+			this.aplication = []
+
+			const res = await fetch(`${API_URI}/post-animes/${id}`)
+			if (!res.ok) {
+				runInAction(() => {
+					this.loading = false
+				})
+				return
+			}
 
 			const data = await res.json()
+			const anime = data?.result ?? data
+			const list = Array.isArray(anime) ? anime : anime ? [anime] : []
+
 			runInAction(() => {
 				this.loading = false
-				this.aplication = Array.isArray(data) ? data : [data]
+				this.aplication = list
 			})
 		} catch (e) {
 			runInAction(() => {

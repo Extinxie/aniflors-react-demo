@@ -1,0 +1,1 @@
+export * from './anime-get/api-latest-store'

@@ -3,7 +3,7 @@ import type { IUser } from '../sign-verser'
 import { API_URI } from '../../../api/api.const'
 
 class UserTop {
-	usersAll: IUser | null = null
+	usersAll: IUser[] | null = null
 
 	constructor() {
 		makeAutoObservable(this)
@@ -11,10 +11,12 @@ class UserTop {
 
 	async getTopUsers() {
 		try {
-			const res = await fetch(`${API_URI}/users/users-top​`)
+			const res = await fetch(`${API_URI}/users/users-top`)
 			const data = await res.json()
+			console.log('API response:', data)
+
 			runInAction(() => {
-				this.usersAll = data
+				this.usersAll = Array.isArray(data) ? data : [data]
 			})
 		} catch (e) {
 			console.error(e)

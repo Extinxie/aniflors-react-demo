@@ -14,7 +14,7 @@ class AnimeLatest {
 	FindAnimesPopular = async () => {
 		try {
 			this.loading = true
-			const res = await fetch(`${API_URI}/shikimori/post-animes/animes`)
+			const res = await fetch(`${API_URI}/post-animes/animes`)
 
 			if (!res.ok) {
 				runInAction(() => {
@@ -47,7 +47,7 @@ class AnimeLatest {
 	FindLatestAnimes = async () => {
 		try {
 			this.loading = true
-			const res = await fetch(`${API_URI}/shikimori/post-animes/latests`)
+			const res = await fetch(`${API_URI}/post-animes/latests`)
 			if (!res.ok) {
 				runInAction(() => {
 					this.loading = false

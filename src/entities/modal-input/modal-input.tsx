@@ -1,22 +1,25 @@
 import { useDisclosure } from '@mantine/hooks'
 import { Modal } from '@mantine/core'
-import { InputForm } from '../utils/input/input-form'
-import { searchAnimes } from '../../shared/store/search-store/search-api-store'
 import { observer } from 'mobx-react-lite'
-import { AniCard } from '../../features/anime-card/anime-card'
 import { SearchIcon } from 'lucide-react'
+import { SearchPanel } from '../../features/search/search-panel'
+import { searchAnimes } from '../../shared/store/search-store/search-api-store'
 
 export const Demo = observer(() => {
 	const [opened, { open, close }] = useDisclosure(false)
-	const { items, query } = searchAnimes
+
+	const handleClose = () => {
+		searchAnimes.reset()
+		close()
+	}
 
 	return (
 		<>
 			<Modal
-				size={'55rem'}
+				size="55rem"
 				opened={opened}
-				onClose={close}
-				title={<InputForm />}
+				onClose={handleClose}
+				title="Поиск"
 				styles={{
 					root: {
 						backgroundColor: 'rgba(0, 0, 0, 0.5)'
@@ -31,40 +34,19 @@ export const Demo = observer(() => {
 					},
 					header: {
 						backgroundColor: '#111',
-						borderBottom: '1px solid #333',
-						display: 'flex',
-						alignItems: 'center',
-						gap: '1rem'
+						borderBottom: '1px solid #333'
 					},
 					title: {
 						color: 'white',
-						backgroundColor: '#111',
-						flex: 1,
-						minWidth: 0
+						backgroundColor: '#111'
 					},
 					body: {
 						backgroundColor: '#111',
-						color: 'white',
-						maxHeight: '70vh',
-						overflowY: 'auto'
+						color: 'white'
 					}
 				}}
 			>
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-					{items.length > 0 ? (
-						items.map((item) => (
-							<AniCard key={item.id} item={item} />
-						))
-					) : query ? (
-						<div className="col-span-full text-center text-gray-400 py-8">
-							Ничего не найдено
-						</div>
-					) : (
-						<div className="col-span-full text-center text-gray-400 py-8">
-							Введите запрос для поиска
-						</div>
-					)}
-				</div>
+				<SearchPanel onNavigate={handleClose} />
 			</Modal>
 
 			<div

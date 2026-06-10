@@ -6,12 +6,19 @@ import { BellSvg } from '../../../../shared/data/svg/bell/bell'
 import { LikeSvg } from '../../../../shared/data/svg/likes/likes'
 import { Menu } from '@mantine/core'
 import { Demo } from '../../../../entities/modal-input/modal-input'
+import { SearchPanel } from '../../../../features/search/search-panel'
 import { observer } from 'mobx-react-lite'
 import { signVersers } from '../../../../shared/store/auth/sign-verser'
+import { searchAnimes } from '../../../../shared/store/search-store/search-api-store'
 
 const Header = observer(() => {
 	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
 	const { user, isAuth, signOut } = signVersers
+
+	const closeSearchModal = () => {
+		searchAnimes.reset()
+		setIsSearchModalOpen(false)
+	}
 
 	return (
 		<>
@@ -88,18 +95,14 @@ const Header = observer(() => {
 
 			<Modal
 				isOpen={isSearchModalOpen}
-				onClose={() => setIsSearchModalOpen(false)}
+				onClose={closeSearchModal}
+				contentClassName="max-w-3xl"
 			>
 				<div className="w-full">
 					<h2 className="text-white text-xl font-semibold mb-4">
 						Поиск
 					</h2>
-					<input
-						className="bg-neutral-800 rounded-2xl text-white font-semibold px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-neutral-600"
-						type="text"
-						placeholder="Начать поиск"
-						autoFocus
-					/>
+					<SearchPanel onNavigate={closeSearchModal} />
 				</div>
 			</Modal>
 		</>
