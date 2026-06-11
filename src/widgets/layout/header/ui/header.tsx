@@ -10,6 +10,7 @@ import { SearchPanel } from '../../../../features/search/search-panel'
 import { observer } from 'mobx-react-lite'
 import { signVersers } from '../../../../shared/store/auth/sign-verser'
 import { searchAnimes } from '../../../../shared/store/search-store/search-api-store'
+import rimsolo from '../ui/rim/rimsolo.jpg'
 
 const Header = observer(() => {
 	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
@@ -83,7 +84,7 @@ const Header = observer(() => {
 						<Link to={'/registration'}>
 							<div className="w-12 h-12 md:w-12 md:h-12 rounded-full border-2  cursor-pointer hover:opacity-80 transition-opacity flex items-center justify-center">
 								<img
-									src="rimsolo.jpg"
+									src={rimsolo}
 									className="rounded-full w-11 h-11"
 									alt=""
 								/>
